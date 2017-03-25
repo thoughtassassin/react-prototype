@@ -3,32 +3,39 @@ import React from 'react';
 export class Input extends React.Component {
     constructor(props) {
         super(props);
-        this.valid = false;
 
+        this.errorMessage = this.props.label + " must be filled out";
+
+        this.state = {hasError: false, dirty: false};
         this.handleBlur = this.handleBlur.bind(this);
     }
     
-    validate(value) {
+    _validate(value) {
         if (value === null || value === '') {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
     
     handleBlur(event) {
-        this.valid = this.validate(event.target.value);
-        console.log("input valid is: ", this.valid);
+        if (this._validate(event.target.value)) {
+            this.setState({hasError: true});
+        } else {
+            this.setState({hasError: false});
+        }
+        this.setState({dirty: true});
+        console.log("This has error: ", this.state.hasError)
     }
 
     render() {
         return (
-            <div className="form-group">
-                    <label htmlFor={this.props.id}>
-                        {this.props.label}
+            <div className={this.state.dirty ? (this.state.hasError ? 'form-group has-error' : 'form-group has-success') : 'form-group'}>
+                <label htmlFor={this.props.id} className={this.state.hasError? 'error' : 'success'}>
+                        {this.props.label}&nbsp;
+                        <span className={this.state.hasError? '' : 'hidden'} >
+                             must be filled out.
+                        </span>
                     </label>
-                    <div className={this.props.hasError}>
-                        {this.props.errorMesssage}
-                    </div>
                     <input
                         type="text"
                         className="form-control" 
