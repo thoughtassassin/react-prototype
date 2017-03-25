@@ -1,12 +1,6 @@
 import React from 'react';
 
 export class Select extends React.Component {
-    
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     render() {
         let options = this.props.options.map((option, index) => {
             return (<option value={option} key={index}>{option}</option>);
@@ -14,10 +8,10 @@ export class Select extends React.Component {
 
         return (
             <div className="form-group">
-                <label htmlFor={this.props.inputId}>
-                    {this.props.inputLabel}
+                <label htmlFor={this.props.id}>
+                    {this.props.label}
                 </label>
-                <select value={this.state.value} id={this.props.inputId} className="form-control">{options}</select>
+                <select value={this.props.value} name={this.props.name} id={this.props.inputId} onChange={this.props.handleChange} className="form-control">{options}</select>
             </div>
         );
     }

@@ -18,6 +18,14 @@
   font-size: large;
 }
 
+form {
+  margin-top: 2em;
+}
+
+button {
+  margin-top: 1em;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

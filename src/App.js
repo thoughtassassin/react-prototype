@@ -9,12 +9,9 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>MSP React Prototype</h2>
         </div>
         <div className="container">
-          <p className="App-intro">
-            An MSP prototype
-          </p>
           <Form2 />
         </div>
       </div>

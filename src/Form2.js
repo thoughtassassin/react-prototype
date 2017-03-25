@@ -1,6 +1,7 @@
 import React from 'react';
-import { Data } from './Data'
-import { Input } from './Input'
+import { Data } from './Data';
+import { Input } from './Input';
+import { Select } from './Select';
 import { Button } from './Button';
 
 export class Form2 extends React.Component {
@@ -21,22 +22,41 @@ export class Form2 extends React.Component {
 
         this.setState({
             [name] : value
-        })
+        });
     }
 
     handleSubmit(event) {
-        alert("First Name: " + this.state.firstName + "\nLast Name: " + this.state.lastName);
+        alert("First Name: " + this.state.firstName + 
+              "\nLast Name: " + this.state.lastName +
+              "\nFavourite Food: " + this.state.food);
         event.preventDefault();
     }
 
     render() {
         const elements = 
-            this.data.map((element, index) =>
-                    <Input key={index}
+            this.data.map((element, index) => { 
+                switch (element.type) {
+                    case 'input' :
+                        return <Input key={index}
+                           id={element.name} 
+                           label={element.label} 
                            placeholder={element.placeholder} 
                            name={element.name} 
                            handleChange={this.handleInputValueChange} />
-                );
+                    case 'select' :
+                        return <Select key={index}
+                            id={element.name} 
+                            label={element.label} 
+                            placeholder={element.placeholder}
+                            name={element.name}
+                            options={element.options} 
+                            handleChange={this.handleInputValueChange} />
+                    default:
+                        return ''; 
+                    }
+                }
+                    
+            );
     
         return (
             <form onSubmit={this.handleSubmit} className="form-horizontal">
