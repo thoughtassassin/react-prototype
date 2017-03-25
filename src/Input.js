@@ -30,7 +30,7 @@ export class Input extends React.Component {
     render() {
         return (
             <div className={this.state.dirty ? (this.state.hasError ? 'form-group has-error' : 'form-group has-success') : 'form-group'}>
-                <label htmlFor={this.props.id} className={this.state.hasError? 'error' : 'success'}>
+                <label htmlFor={this.props.id}>
                         {this.props.label}&nbsp;
                         <span className={this.state.hasError? '' : 'hidden'} >
                              must be filled out.

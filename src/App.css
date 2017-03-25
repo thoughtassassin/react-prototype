@@ -26,6 +26,14 @@ form {
  color: #a94442; 
 }
 
+.has-error label {
+  color: #a94442;
+}
+
+.has-success label {
+  color: #3c763d;
+}
+
 button {
   margin-top: 1em;
 }
