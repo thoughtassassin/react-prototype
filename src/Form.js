@@ -1,74 +1,69 @@
 import React from 'react';
-import {Input} from './Input.js';
-import {Select} from './Select.js';
-import {Button} from './Button.js';
+import { Data } from './Data';
+import { Input } from './Input';
+import { Select } from './Select';
+import { Button } from './Button';
 
 export class Form extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            address1: '',
-            address2: '',
-            city: '',
-            foodType: ''
-        };
+        this.data = Data();
+        let stateValues = {};
+        this.data.forEach( item => stateValues[item.name] = '' );   
+        this.state = stateValues;
 
-        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInputValueChange = this.handleInputValueChange.bind(this);
     }
 
-    handleChange(event) {
-        alert("this is event");
-        this.setState({value: event.target.value});
+    handleInputValueChange(event) {
+        const name = event.target.name;
+        const value = event.target.value;
+
+        this.setState({
+            [name] : value
+        });
     }
 
     handleSubmit(event) {
-        alert('This form was submitted ' + this.state.value);
+        alert("First Name: " + this.state.firstName + 
+              "\nLast Name: " + this.state.lastName +
+              "\nFavourite Food: " + this.state.food);
         event.preventDefault();
     }
 
     render() {
-        let options = [
-            'Pizza', 
-            'Hot Dogs', 
-            'Knakworstje', 
-            'Coffee'
-        ];
-        const address1 = this.state.address1;
-        const address2 = this.state.address2;
-        const city = this.state.city;
-        const foodType = this.state.foodType;
+        const elements = 
+            this.data.map((element, index) => { 
+                switch (element.type) {
+                    case 'input' :
+                        return <Input key={index}
+                           id={element.name} 
+                           label={element.label} 
+                           placeholder={element.placeholder} 
+                           name={element.name} 
+                           handleChange={this.handleInputValueChange} />
+                    case 'select' :
+                        return <Select key={index}
+                            id={element.name} 
+                            label={element.label} 
+                            placeholder={element.placeholder}
+                            name={element.name}
+                            options={element.options} 
+                            handleChange={this.handleInputValueChange} />
+                    default:
+                        return ''; 
+                    }
+                }
+                    
+            );
+    
         return (
-            <form onSubmit={this.handleSubmit}>
-                <Input
-                    inputType="text" 
-                    inputId="address1" 
-                    inputLabel="Address 1" 
-                    value={address1} 
-                    onChange={this.handleChange} />
-                <Input
-                    inputType="text" 
-                    inputId="address2" 
-                    inputLabel="Address 2"
-                    value={address2} 
-                    onChange={this.handleChange} />
-                <Input
-                    inputType="text" 
-                    inputId="city" 
-                    inputLabel="City"
-                    value={city} 
-                    onChange={this.handleChange} />
-                <Select
-                    inputId="foodtype"
-                    inputLabel="Type of Food" 
-                    options={options}
-                    value={foodType} 
-                    onChange={this.handleChange} />
-                <Button
+            <form onSubmit={this.handleSubmit} className="form-horizontal">
+                 { elements }
+                <Button 
                     type="submit"
-                    label="Submit"
-                />
-                
+                    label="Submit" />
             </form>
         );
     }

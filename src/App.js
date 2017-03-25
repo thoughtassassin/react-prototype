@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Form2 } from './Form2.js';
+import { Form } from './Form.js';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
           <h2>MSP React Prototype</h2>
         </div>
         <div className="container">
-          <Form2 />
+          <Form />
         </div>
       </div>
     );
