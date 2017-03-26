@@ -22,16 +22,6 @@ export class Form extends React.Component {
         const name = event.target.name;
         const value = event.target.value;
 
-        if (event.target.type === 'select-one' && event.target.required) {
-            if (event.target.value !== '') {
-                event.target.parentElement.classList.remove('has-error');
-                event.target.parentElement.classList.add('has-success');
-            } else {
-                event.target.parentElement.classList.add('has-error');
-                event.target.parentElement.classList.remove('has-success');
-            }
-        }
-
         this.setState({
             [name] : value
         });
