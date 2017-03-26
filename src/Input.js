@@ -29,7 +29,6 @@ export class Input extends React.Component {
             this.setState({hasError: false});
         }
         this.setState({dirty: true});
-        console.log("This has error: ", this.state.hasError)
     }
 
     render() {
