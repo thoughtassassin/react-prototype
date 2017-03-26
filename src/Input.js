@@ -4,16 +4,18 @@ export class Input extends React.Component {
     constructor(props) {
         super(props);
 
-        this.errorMessage = this.props.label + " must be filled out";
+        this.errorMessage = '';
         this.state = {hasError: false, hasSuccess: false, dirty: false};
         this.handleBlur = this.handleBlur.bind(this);
     }
     
     _hasError(value) {
         if (this.props.required && (value === null || value === '')) {
+            this.errorMessage = ' is required.';
             return true;
         }
         if (this.props.minLength && (value.length < this.props.minLength)) {
+            this.errorMessage = ' must be at least ' + this.props.minLength + ' characters.';
             return true;
         }
         return false;
@@ -39,7 +41,7 @@ export class Input extends React.Component {
                 <label htmlFor={this.props.id}>
                         {this.props.label}<span className={this.props.required ? '' : 'hidden'}>*</span>&nbsp; 
                         <span className={this.state.hasError? '' : 'hidden'} >
-                             must be filled out.
+                             {this.errorMessage}
                         </span>
                     </label>
                     <input
