@@ -55,7 +55,8 @@ export class Form extends React.Component {
                            placeholder={element.placeholder} 
                            name={element.name} 
                            handleChange={this.handleInputValueChange}
-                           validation={element.validation} />
+                           minLength={element.validation.minLength}
+                           required={element.validation.required} />
                     case 'select' :
                         return <Select key={index}
                             id={element.name} 

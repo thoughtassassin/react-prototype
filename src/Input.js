@@ -6,18 +6,15 @@ export class Input extends React.Component {
 
         this.errorMessage = this.props.label + " must be filled out";
         let initState = {hasError: false, dirty: false};
-        for (let validation in this.props.validation) {
-            initState[validation] = this.props.validation[validation];
-        }
         this.state = initState;
         this.handleBlur = this.handleBlur.bind(this);
     }
     
     _hasError(value) {
-        if (this.state.required && (value === null || value === '')) {
+        if (this.props.required && (value === null || value === '')) {
             return true;
         }
-        if (this.state.minLength && (value.length < this.state.minLength)) {
+        if (this.props.minLength && (value.length < this.props.minLength)) {
             return true;
         }
         return false;
@@ -48,8 +45,8 @@ export class Input extends React.Component {
                         placeholder={this.props.placeholder}
                         onBlur={this.handleBlur}
                         onChange={this.props.handleChange} 
-                        required={this.state.required} 
-                        minLength={this.state.minLength}/>
+                        required={this.props.required} 
+                        minLength={this.props.minLength}/>
             </div>
         );
     }
