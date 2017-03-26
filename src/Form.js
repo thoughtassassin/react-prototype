@@ -27,9 +27,11 @@ export class Form extends React.Component {
     }
 
     handleSubmit(event) {
-        alert("First Name: " + this.state.firstName + 
-              "\nLast Name: " + this.state.lastName +
-              "\nFavourite Food: " + this.state.food);
+        let message = '';
+        for (let key in this.state) {
+            message += key + ': ' + this.state[key] + '\n';
+        }
+        alert(message);
         event.preventDefault();
     }
 

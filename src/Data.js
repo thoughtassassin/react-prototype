@@ -21,6 +21,13 @@ export function Data() {
                 options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
                 placeholder: 'Select an option',
                 validation: {required: true}
-            }
+            },
+            {
+                type: 'input',
+                label: 'Test Value',
+                name: 'testValue',
+                placeholder: 'Enter your test value',
+                validation: ''
+            },
         ];
 } 
