@@ -7,6 +7,7 @@ import { Button } from './Button';
 export class Form extends React.Component {
     constructor(props) {
         super(props);
+
         this.data = Data();
         let stateValues = {};
         this.data.forEach( item => stateValues[item.name] = '' );   
@@ -42,7 +43,8 @@ export class Form extends React.Component {
                            label={element.label} 
                            placeholder={element.placeholder} 
                            name={element.name} 
-                           handleChange={this.handleInputValueChange} />
+                           handleChange={this.handleInputValueChange}
+                           validation={element.validation} />
                     case 'select' :
                         return <Select key={index}
                             id={element.name} 
@@ -50,7 +52,8 @@ export class Form extends React.Component {
                             placeholder={element.placeholder}
                             name={element.name}
                             options={element.options} 
-                            handleChange={this.handleInputValueChange} />
+                            handleChange={this.handleInputValueChange}
+                            validation={element.validation} />
                     default:
                         return ''; 
                     }

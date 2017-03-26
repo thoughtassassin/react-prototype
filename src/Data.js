@@ -4,20 +4,23 @@ export function Data() {
                 type: 'input',
                 label: 'First name',
                 name: 'firstName',
-                placeholder: 'Enter your first name'
+                placeholder: 'Enter your first name',
+                validation: {required: true, minLength: 8}
             },
             {
                 type: 'input',
                 label: 'Last name',
                 name: 'lastName',
-                placeholder: 'Enter your last name'
+                placeholder: 'Enter your last name',
+                validation: {required: true}
             },
             {
                 type: 'select',
                 label: 'Favourite Food',
                 name: 'food',
                 options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
-                placeholder: 'Select an option'
+                placeholder: 'Select an option',
+                validation: ''
             }
         ];
 } 
