@@ -23,11 +23,12 @@ export function Data() {
                 validation: {required: true}
             },
             {
-                type: 'input',
-                label: 'Test Value',
-                name: 'testValue',
-                placeholder: 'Enter your test value',
+                type: 'select',
+                label: 'Favourite Drink',
+                name: 'drink',
+                options: ['Water', 'Ice Tea', 'Diet Soda', 'Mexican Cola'],
+                placeholder: 'Select an option',
                 validation: {}
-            },
+            }
         ];
 } 

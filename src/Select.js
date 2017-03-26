@@ -13,10 +13,15 @@ export class Select extends React.Component {
 
         if (this.props.required) {
             if (event.target.value === '') {
-                this.setState({hasError : true, hasSuccess: false});
+                this.setState({hasError : true});
             } else {
-                this.setState({hasError : false, hasSuccess: true});
+                this.setState({hasError : false});
             }
+        }
+        if (event.target.value === '') {
+            this.setState({hasSuccess : false});
+        } else {
+            this.setState({hasSuccess: true});
         }
     }
 
