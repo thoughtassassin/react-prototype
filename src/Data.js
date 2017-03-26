@@ -27,7 +27,7 @@ export function Data() {
                 label: 'Test Value',
                 name: 'testValue',
                 placeholder: 'Enter your test value',
-                validation: ''
+                validation: {}
             },
         ];
 } 

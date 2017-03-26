@@ -5,7 +5,7 @@ export class Input extends React.Component {
         super(props);
 
         this.errorMessage = this.props.label + " must be filled out";
-        this.state = {hasError: false, dirty: false};
+        this.state = {hasError: false, hasSuccess: false, dirty: false};
         this.handleBlur = this.handleBlur.bind(this);
     }
     
@@ -21,16 +21,21 @@ export class Input extends React.Component {
     
     handleBlur(event) {
         if (this._hasError(event.target.value)) {
-            this.setState({hasError: true});
+            this.setState({hasError: true, hasSuccess: false});
         } else {
             this.setState({hasError: false});
+            if (event.target.value !== '') {
+                this.setState({hasSuccess: true});
+            } else {
+                this.setState({hasSuccess: false});
+            }
         }
         this.setState({dirty: true});
     }
 
     render() {
         return (
-            <div className={this.state.dirty ? (this.state.hasError ? 'form-group has-error' : 'form-group has-success') : 'form-group'}>
+            <div className={this.state.dirty ? (this.state.hasError ? 'form-group has-error' : (this.state.hasSuccess ? 'form-group has-success' : 'form-group')) : 'form-group'}>
                 <label htmlFor={this.props.id}>
                         {this.props.label}&nbsp;
                         <span className={this.state.hasError? '' : 'hidden'} >
