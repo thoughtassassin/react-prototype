@@ -12,6 +12,7 @@ class App extends Component {
           <h2>MSP React Prototype</h2>
         </div>
         <div className="container">
+          <p className="instructions">Fields marked with * are required</p>
           <Form />
         </div>
       </div>

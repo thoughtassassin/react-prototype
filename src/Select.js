@@ -34,7 +34,7 @@ export class Select extends React.Component {
         return (
             <div className={this.state.hasError ? 'form-group has-error' : (this.state.hasSuccess ? 'form-group has-success' : 'form-group') }>
                 <label htmlFor={this.props.id}>
-                    {this.props.label} <span className="error-message"> is required</span>
+                    {this.props.label}<span className={this.props.required ? '' : 'hidden'}>*</span> <span className="error-message"> is required</span>
                 </label>
                 <select value={this.props.value} 
                         name={this.props.name} 
