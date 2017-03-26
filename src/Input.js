@@ -6,7 +6,12 @@ export class Input extends React.Component {
 
         this.errorMessage = this.props.label + " must be filled out";
 
-        this.state = {hasError: false, dirty: false};
+        let initState = {hasError: false, dirty: false};
+        for (let validation in this.props.validation) {
+            initState[validation] = this.props.validation[validation];
+        }
+        this.state = initState;
+        console.log(this.state);
         this.handleBlur = this.handleBlur.bind(this);
     }
     
@@ -42,7 +47,9 @@ export class Input extends React.Component {
                         name={this.props.name}
                         placeholder={this.props.placeholder}
                         onBlur={this.handleBlur}
-                        onChange={this.props.handleChange} />
+                        onChange={this.props.handleChange} 
+                        required={this.state.required} 
+                        minLength={this.state.minLength}/>
             </div>
         );
     }

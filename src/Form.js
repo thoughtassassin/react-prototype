@@ -10,7 +10,7 @@ export class Form extends React.Component {
 
         this.data = Data();
         let stateValues = {};
-        this.data.forEach( item => stateValues[item.name] = '' );   
+        this.data.forEach( item => stateValues[item.name] = '' );
         this.state = stateValues;
 
         this.handleSubmit = this.handleSubmit.bind(this);
