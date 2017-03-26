@@ -5,7 +5,6 @@ export class Input extends React.Component {
         super(props);
 
         this.errorMessage = this.props.label + " must be filled out";
-
         let initState = {hasError: false, dirty: false};
         for (let validation in this.props.validation) {
             initState[validation] = this.props.validation[validation];
@@ -15,15 +14,18 @@ export class Input extends React.Component {
         this.handleBlur = this.handleBlur.bind(this);
     }
     
-    _validate(value) {
-        if (value === null || value === '') {
+    _hasError(value) {
+        if (this.state.required && (value === null || value === '')) {
+            return true;
+        }
+        if (this.state.minLength && (value.length < this.state.minLength)) {
             return true;
         }
         return false;
     }
     
     handleBlur(event) {
-        if (this._validate(event.target.value)) {
+        if (this._hasError(event.target.value)) {
             this.setState({hasError: true});
         } else {
             this.setState({hasError: false});
