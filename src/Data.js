@@ -20,7 +20,7 @@ export function Data() {
                 name: 'food',
                 options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
                 placeholder: 'Select an option',
-                validation: ''
+                validation: {required: true}
             }
         ];
 } 

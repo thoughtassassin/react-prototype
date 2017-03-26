@@ -34,6 +34,14 @@ form {
   color: #3c763d;
 }
 
+.error-message {
+  display: none;
+}
+
+.has-error .error-message {
+  display: inline;
+}
+
 button {
   margin-top: 1em;
 }

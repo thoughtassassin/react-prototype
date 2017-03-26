@@ -10,7 +10,6 @@ export class Input extends React.Component {
             initState[validation] = this.props.validation[validation];
         }
         this.state = initState;
-        console.log(this.state);
         this.handleBlur = this.handleBlur.bind(this);
     }
     

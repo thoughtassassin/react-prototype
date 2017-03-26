@@ -14,6 +14,7 @@ export class Form extends React.Component {
         this.state = stateValues;
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.hasError = this.hasError.bind(this);
         this.handleInputValueChange = this.handleInputValueChange.bind(this);
     }
 
@@ -21,9 +22,29 @@ export class Form extends React.Component {
         const name = event.target.name;
         const value = event.target.value;
 
+        if (event.target.type === 'select-one' && event.target.required) {
+            if (event.target.value !== '') {
+                event.target.parentElement.classList.remove('has-error');
+                event.target.parentElement.classList.add('has-success');
+            } else {
+                event.target.parentElement.classList.add('has-error');
+                event.target.parentElement.classList.remove('has-success');
+            }
+        }
+
         this.setState({
             [name] : value
         });
+    }
+
+    hasError(value) {
+        console.log(value);
+
+        if (value === '') {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     handleSubmit(event) {
@@ -53,7 +74,7 @@ export class Form extends React.Component {
                             name={element.name}
                             options={element.options} 
                             handleChange={this.handleInputValueChange}
-                            validation={element.validation} />
+                            required={element.validation.required} />
                     default:
                         return ''; 
                     }
