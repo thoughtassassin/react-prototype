@@ -14,7 +14,6 @@ export class Form extends React.Component {
         this.state = stateValues;
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.hasError = this.hasError.bind(this);
         this.handleInputValueChange = this.handleInputValueChange.bind(this);
     }
 
@@ -25,16 +24,6 @@ export class Form extends React.Component {
         this.setState({
             [name] : value
         });
-    }
-
-    hasError(value) {
-        console.log(value);
-
-        if (value === '') {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     handleSubmit(event) {

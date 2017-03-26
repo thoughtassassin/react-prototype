@@ -12,7 +12,6 @@ export class Select extends React.Component {
         this.props.handleChange(event);
 
         if (this.props.required) {
-            console.log(event.target.value);
             if (event.target.value === '') {
                 this.setState({hasError : true, hasSuccess: false});
             } else {
@@ -30,7 +29,7 @@ export class Select extends React.Component {
         return (
             <div className={this.state.hasError ? 'form-group has-error' : (this.state.hasSuccess ? 'form-group has-success' : 'form-group') }>
                 <label htmlFor={this.props.id}>
-                    {this.props.label} <span className="error-message"> must be selected</span>
+                    {this.props.label} <span className="error-message"> is required</span>
                 </label>
                 <select value={this.props.value} 
                         name={this.props.name} 

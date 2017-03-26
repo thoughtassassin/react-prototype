@@ -5,8 +5,7 @@ export class Input extends React.Component {
         super(props);
 
         this.errorMessage = this.props.label + " must be filled out";
-        let initState = {hasError: false, dirty: false};
-        this.state = initState;
+        this.state = {hasError: false, dirty: false};
         this.handleBlur = this.handleBlur.bind(this);
     }
     
