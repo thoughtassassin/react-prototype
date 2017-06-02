@@ -21,14 +21,6 @@ export function Data() {
                 options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
                 placeholder: 'Select an option',
                 validation: {required: true}
-            },
-            {
-                type: 'select',
-                label: 'Favourite Drink',
-                name: 'drink',
-                options: ['Water', 'Ice Tea', 'Diet Soda', 'Mexican Cola'],
-                placeholder: 'Select an option',
-                validation: {}
             }
         ];
 } 
